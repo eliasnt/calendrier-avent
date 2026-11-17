@@ -1,0 +1,11 @@
+# Contenu en clair : ne JAMAIS le mettre en ligne (sinon tout est lisible sans code)
+contenu.js
+
+# Photos privées : intégrées CHIFFRÉES dans donnees.js par CHIFFRER.bat, jamais en clair en ligne
+prive/
+
+# Outils et notes perso : contiennent tes mots, définitions et le code -> restent sur ton ordinateur
+outils/
+LISEZMOI.md
+*.bat
+.claude/

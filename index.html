@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0d1726">
+  <title>Calendrier de l'Avent</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎁</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=mwl3qle7">
+</head>
+<body>
+  <canvas id="neige" aria-hidden="true"></canvas>
+  <div class="guirlande" id="guirlande" aria-hidden="true"></div>
+
+  <!-- ============ ÉCRAN DE CONNEXION ============ -->
+  <main id="ecran-connexion" class="ecran">
+    <div class="carte-connexion">
+      <div class="sceau" aria-hidden="true">🔒</div>
+      <h1 id="titre-connexion">Calendrier de l'Avent</h1>
+      <p class="sous-titre">Entre le code secret pour ouvrir ton calendrier</p>
+
+      <div class="points" id="points" aria-live="polite" aria-label="Code saisi">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <p class="message-erreur" id="erreur-code" role="alert"></p>
+
+      <div class="pave" id="pave">
+        <button type="button" data-touche="1">1</button>
+        <button type="button" data-touche="2">2</button>
+        <button type="button" data-touche="3">3</button>
+        <button type="button" data-touche="4">4</button>
+        <button type="button" data-touche="5">5</button>
+        <button type="button" data-touche="6">6</button>
+        <button type="button" data-touche="7">7</button>
+        <button type="button" data-touche="8">8</button>
+        <button type="button" data-touche="9">9</button>
+        <button type="button" data-touche="effacer" class="touche-secondaire" aria-label="Effacer">⌫</button>
+        <button type="button" data-touche="0">0</button>
+        <button type="button" data-touche="valider" class="touche-secondaire" aria-label="Valider">✓</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============ CALENDRIER ============ -->
+  <main id="ecran-calendrier" class="ecran" hidden>
+    <header class="entete">
+      <button type="button" class="bouton-verrou" id="bouton-verrou" title="Verrouiller">🔒</button>
+      <p class="surtitre" id="surtitre"></p>
+      <h1 id="titre-accueil"></h1>
+      <p class="message-accueil" id="message-accueil"></p>
+    </header>
+
+    <section class="compte" id="compte" aria-live="off">
+      <p class="compte-libelle" id="compte-libelle"></p>
+      <div class="compte-chiffres" id="compte-chiffres">
+        <div><span id="cr-j">00</span><small>jours</small></div>
+        <div><span id="cr-h">00</span><small>heures</small></div>
+        <div><span id="cr-m">00</span><small>min</small></div>
+        <div><span id="cr-s">00</span><small>sec</small></div>
+      </div>
+    </section>
+
+    <section class="grille" id="grille" aria-label="Cases du calendrier"></section>
+
+    <footer class="pied" id="pied"></footer>
+  </main>
+
+  <!-- ============ FENÊTRE D'UNE CASE ============ -->
+  <div class="voile" id="voile" hidden>
+    <article class="fenetre" role="dialog" aria-modal="true" aria-labelledby="fenetre-titre">
+      <button type="button" class="fermer" id="fermer" aria-label="Fermer">✕</button>
+      <p class="fenetre-jour" id="fenetre-jour"></p>
+      <h2 id="fenetre-titre"></h2>
+      <div class="fenetre-media" id="fenetre-media"></div>
+      <div class="fenetre-message" id="fenetre-message"></div>
+      <div class="fenetre-poeme" id="fenetre-poeme"></div>
+      <div class="fenetre-jeu" id="fenetre-jeu"></div>
+      <div class="fenetre-lien" id="fenetre-lien"></div>
+    </article>
+  </div>
+
+  <div class="bulle" id="bulle" role="status" hidden></div>
+
+  <script src="config.js?v=mwl3qle7"></script>
+  <script src="donnees.js?v=mwl3qle7"></script>
+  <script src="app.js?v=mwl3qle7"></script>
+</body>
+</html>
