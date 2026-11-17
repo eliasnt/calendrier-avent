@@ -28,8 +28,12 @@
   const maintenant = () => Date.now() + decalage;
   const estLocal = ['file:'].includes(location.protocol) ||
     ['localhost', '127.0.0.1', '[::1]', ''].includes(location.hostname);
-  // Une case n'est disponible qu'à partir de minuit (heure de Paris) le jour J, partout.
-  const estDispo = (jour, t) => t >= ouverture(jour);
+  // Une case n'est disponible qu'à partir de minuit (heure de Paris) le jour J.
+  // Seule exception : sur TON ordinateur, quand contenu.js (le contenu en clair, qui n'existe que chez toi)
+  // est présent, toutes les cases s'ouvrent pour que tu puisses tout tester.
+  // En ligne, contenu.js n'existe pas : impossible d'activer ce mode.
+  const modeTest = () => estLocal && !!window.CONTENU;
+  const estDispo = (jour, t) => modeTest() || t >= ouverture(jour);
 
   async function synchroniserHeure() {
     if (location.protocol === 'file:') return;
@@ -289,6 +293,13 @@
     $('#ecran-connexion').hidden = true;
     $('#ecran-calendrier').hidden = false;
     window.scrollTo(0, 0);
+    if (modeTest() && !$('#bandeau-test')) {
+      const b = document.createElement('div');
+      b.id = 'bandeau-test';
+      b.className = 'bandeau-test';
+      b.textContent = '🛠️ Mode test (ton ordinateur) — toutes les cases sont ouvertes';
+      document.body.appendChild(b);
+    }
     tic();
     setInterval(tic, 1000);
   }

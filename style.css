@@ -1042,3 +1042,11 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .cv-neige, .cv-guirlande b, .cv-bandeau, .cv-pile span { animation: none; }
   .cv-neige { display: none; }
 }
+
+/* Bandeau du mode test (seulement sur ton ordinateur, avec contenu.js) */
+.bandeau-test {
+  position: fixed; left: 50%; bottom: 12px; z-index: 15; transform: translateX(-50%);
+  width: max-content; max-width: calc(100% - 24px); padding: 8px 12px; border-radius: 12px;
+  background: #ffd166; color: #3a2418; font-size: .8rem; text-align: center;
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, .6); pointer-events: none;
+}
